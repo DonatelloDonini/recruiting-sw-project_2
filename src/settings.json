@@ -1,0 +1,87 @@
+{
+    "video_path": {
+        "value": "./assets/video.mp4",
+        "type": "string",
+        "description": "The path of the video to analyze"
+    },
+    "frame_width": {
+        "value": 500,
+        "type": "int",
+        "description": "The width of the frame to display, if the height is not specified, the aspect ratio will be maintained, if both are not specified, the original frame size will be used"
+    },
+    "frame_height": {
+        "value": null,
+        "type": "int",
+        "description": "The height of the frame to display, if the width is not specified, the aspect ratio will be maintained, if both are not specified, the original frame size will be used"
+    },
+    "grayscale_mask_dimensions": {
+        "value": [7],
+        "type": "array",
+        "description": "When extracting keypoints, a gaussian blur is applied to the frame.\nThis array, which can have either one or two elements, represents how how large the blurring area is.\nIf one element is provided, the same value is used for both dimensions (square box).\nBoth the elements of the array must be odd positive integers."
+    },
+    "canny_thresholds": {
+        "value": [50, 150],
+        "type": "array",
+        "description": "When extracting keypoints, a canny edge detector is applied.\nThis array, which must have two elements, represents the lower and upper thresholds for the canny edge detector.\nBoth the elements of the array must be positive integers."
+    },
+    "epsilon_scalar": {
+        "value": 0.02,
+        "type": "float",
+        "description": "This parameter defines the epsilon scalar value used in the calculations.\n It is a small constant added to prevent division by zero or other numerical issues."
+    },
+    "min_points_density": {
+        "value": 0,
+        "type": "int",
+        "description": "When extracting keypoints, in order to reduce the noise, only points that come in groups that count at least min_points_density elements.\nThis parameter should be a positive integer."
+    },
+    "interframe_check_radius": {
+        "value": 10,
+        "type": "int",
+        "description": "When searching for points close to each other between a frame and another, this parameter defines the radius of the shape in which to search around the point in the first frame.\nThis parameter should be a positive integer."
+    },
+    "surrounding_check_area_radius": {
+        "value": 5,
+        "type": "int",
+        "description": "When comparing different areas around a pixel, this parameter defines the radius of the shape in which to compare the areas.\nIf this parameter isn't specified, it defaults to interframe_check_radius.\nThis parameter should be a positive integer."
+    },
+    "color_space": {
+        "value": 0,
+        "type": "int",
+        "description": "When comparing different areas around a pixel, this parameter defines in which color space to consider the differences.\nReference values:\n0\tGRAYSCALE\n1\tBGR"
+    },
+    "interframe_check_shape": {
+        "value": 0,
+        "type": "int",
+        "description": "This parameter is used in two different scenarios:\n- When trying to find the pixels close to each other from one frame to another\n- When extracting different areas around a pixel\nReference values:\n0\tSQUARE\n1\tCIRCLE"
+    },
+    "keypoints_temperature": {
+        "value": 8,
+        "type": "int",
+        "description": "This parameter defines the temperature of the keypoints.\nIt should be a positive int."
+    },
+    "heat_dispersion_radius": {
+        "value": 8,
+        "type": "int",
+        "description": "This parameter defines the radius of the shape in which to disperse the \"heat\".\nIt should be a positive int. If not specified, it defaults to the value of interframe_check_radius."
+    },
+    "cooldown_coefficient": {
+        "value": 2,
+        "type": "int",
+        "description": "This parameter defines the coefficient used to cool down the heat map.\nIt should be a positive int."
+    },
+    "heat_dispersion_behaviour": {
+        "value": 0,
+        "type": "int",
+        "description": "This parameter defines the behaviour of the \"heat\" dispersion.\nReference values:\n0\tLINEAR\n1\tGAUSSIAN"
+    },
+    "movement_threshold": {
+        "value": 0,
+        "type": "int",
+        "description": "This parameter defines the threshold value for the movement in pixels of the keypoints.\nWhen the movement is lower than the threshold, it gets ignored.\nIt should be a positive int."
+    },
+    "heat_threshold": {
+        "value": 240,
+        "type": "int",
+        "description": "This parameter defines the threshold value for the heat map keypoint filtering.\nPoints with a corresponding heat higher or equal to this threshold will be ignored.\nIt should be a positive int between 0 and 255."
+    }
+}
