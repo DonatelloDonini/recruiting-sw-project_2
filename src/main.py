@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import math
 import time
 import csv
 
@@ -299,6 +300,16 @@ def calculate_average_angle(point_pairs):
 
     return average_angle
 
+def average_distance(points):
+    total_distance = 0
+    for point in points:
+        (start_x, start_y), (end_x, end_y) = point
+        distance = math.sqrt((end_x - start_x) ** 2 + (end_y - start_y) ** 2)
+        total_distance += distance
+
+    average = total_distance / len(points)
+    return average
+
 def main():
     ###                          ###
     ### Code to extract settings ###
@@ -497,7 +508,8 @@ def main():
                 "non_valid_keypoints": len(bound_keypoints) - valid_keypoints_count if bound_keypoints is not None else 0,
                 "standard_deviation": np.std(ending_points - starting_points),
                 "average_difference_from_mean": np.mean(ending_points - starting_points),
-                "vector_angle_radians": calculate_average_angle(valid_bound_keypoints)
+                "vector_angle_radians": calculate_average_angle(valid_bound_keypoints),
+                "vector_module": average_distance(valid_bound_keypoints)
             })
 
         ###                ###
