@@ -462,10 +462,6 @@ def main():
         if (len(starting_points)> 4) and (len(ending_points)> 4):
             homography_matrix, _ = cv2.findHomography(starting_points, ending_points)
 
-            if DEBUG:
-                cv2.imshow("Homography", cv2.warpPerspective(frame, homography_matrix, (frame_width, frame_height)))
-                cv2.moveWindow("Homography", 510*2, frame_height+ 30)
-
         ###              ###
         ### Info display ###
         ###              ###
