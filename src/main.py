@@ -354,7 +354,8 @@ def main():
             "non_valid_keypoints",
             "standard_deviation",
             "average_difference_from_mean",
-            "vector_angle_radians"
+            "vector_angle_radians",
+            "vector_module"
         ])
         csv_writer.writeheader()
 
